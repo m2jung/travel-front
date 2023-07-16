@@ -1,24 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import MapComponent from './map.comp'
+import React from 'react'
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
-export default function MapApp(): JSX.Element {
+const containerStyle = {
+  width: '1200px',
+  height: '650px'
+};
 
-    const mapCss = {
-        maxWidth: "1280px",
-        margin: "0 auto",
-        padding: "2rem",
-        textAlign: "center",
-        overflow: "hidden",
-      }
+const center = {
+  lat: 37.5649867,
+  lng: 126.985575
+};
 
-  return (
-    <div className="App">
-      <div className='Top'>
-        <img style={{width: 20, height: 20}} src="https://cdn.worldvectorlogo.com/logos/google-maps-2020-icon.svg" alt="Img" />
-        <h1>React Google Maps</h1>
-      </div>
-      <MapComponent />
-    </div>
-  )
+const OPTIONS = {
+  minZoom: 4,
+  maxZoom: 18,
 }
+
+export default function MapFunc(): JSX.Element {
+  
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: 'AIzaSyCTFoF1rJNAPV0yZWh7TSMcaRQiIBdPr1o',
+  })
+  
+  const [map, setMap] = React.useState(null)
+  
+  const onLoad = React.useCallback(function callback(map: any) {
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+  
+    setMap(map)
+  }, [])
+  
+  const onUnmount = React.useCallback(function callback(map: any) {
+    setMap(null)
+  }, [])
+   
+  return isLoaded ? (
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={center}
+      onLoad={onLoad}
+      onUnmount={onUnmount}
+      options={OPTIONS}
+    >
+      <Marker position={center}></Marker>
+    </GoogleMap>
+  ) : <></>
+}
+

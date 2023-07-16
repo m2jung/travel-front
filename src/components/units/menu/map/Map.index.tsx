@@ -1,9 +1,9 @@
-import MapApp from "../../../function/map/map.func"
+import MapFunc from "../../../function/map/map.func"
 
 export default function MapIndexPage() {
     return (
         <div>
-            <MapApp />
+            <MapFunc />
         </div>
     )
 }
