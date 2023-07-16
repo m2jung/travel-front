@@ -1,51 +1,50 @@
-import React from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import styled from "@emotion/styled";
+import { useEffect } from "react";
 
-const containerStyle = {
-  width: '1200px',
-  height: '650px'
-};
-
-const center = {
-  lat: 37.5649867,
-  lng: 126.985575
-};
-
-const OPTIONS = {
-  minZoom: 4,
-  maxZoom: 18,
+interface MapProps {
+  latitude: number;
+  longitude: number;
 }
 
-export default function MapFunc(): JSX.Element {
-  
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: 'AIzaSyCTFoF1rJNAPV0yZWh7TSMcaRQiIBdPr1o',
-  })
-  
-  const [map, setMap] = React.useState(null)
-  
-  const onLoad = React.useCallback(function callback(map: any) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-  
-    setMap(map)
-  }, [])
-  
-  const onUnmount = React.useCallback(function callback(map: any) {
-    setMap(null)
-  }, [])
-   
-  return isLoaded ? (
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={center}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
-      options={OPTIONS}
-    >
-      <Marker position={center}></Marker>
-    </GoogleMap>
-  ) : <></>
+declare global {
+  interface Window {
+    kakao: any;
+  }
 }
 
+const MapContainer = styled.div`
+  aspect-ratio: 320 / 220;
+`;
+
+export default function MapFunc({ latitude, longitude }: MapProps) {
+  useEffect(() => {
+    const mapScript = document.createElement("script");
+
+    mapScript.async = true;
+    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_MAP_API_KEY}&autoload=false`;
+
+    document.head.appendChild(mapScript);
+
+    const onLoadKakaoMap = () => {
+      window.kakao.maps.load(() => {
+        const container = document.getElementById("map");
+        const options = {
+          center: new window.kakao.maps.LatLng(latitude, longitude),
+        };
+        const map = new window.kakao.maps.Map(container, options);
+        const markerPosition = new window.kakao.maps.LatLng(latitude, longitude);
+        const marker = new window.kakao.maps.Marker({
+          position: markerPosition,
+        });
+        marker.setMap(map);
+      });
+    };
+    mapScript.addEventListener("load", onLoadKakaoMap);
+
+    return () => mapScript.removeEventListener("load", onLoadKakaoMap);
+  }, [latitude, longitude]);
+
+  return (
+    <MapContainer id="map" />
+  );
+}
