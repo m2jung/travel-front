@@ -11,6 +11,7 @@
   "dependencies": {
     "@apollo/client": "^3.7.17",
     "@emotion/styled": "^11.11.0",
+    "@hookform/resolvers": "^3.1.1",
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@material-ui/lab": "^4.0.0-alpha.61",
@@ -26,7 +27,9 @@
     "react": "17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
-    "recoil": "^0.7.7"
+    "react-hook-form": "^7.45.1",
+    "recoil": "^0.7.7",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "17.0.2",

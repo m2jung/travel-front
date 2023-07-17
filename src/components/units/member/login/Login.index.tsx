@@ -6,8 +6,6 @@ import { access } from "fs";
 import { useRecoilState } from "recoil";
 import { resultKeyNameFromField } from "@apollo/client/utilities";
 
-
-
 export default function LoginPage():JSX.Element {
 
 // 1.값을 저장, 보낼 변수 선언 
