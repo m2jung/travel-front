@@ -1,9 +1,16 @@
-import { AppProps } from "next/app";
+import { CookiesProvider } from "react-cookie";
+import { RecoilRoot } from "recoil";
 
-export default function MyApp({ Component }: AppProps): JSX.Element {
-  return (
-    <>
-      <Component />
-    </>
-  )
+// 모든 페이지가 합쳐지는 곳 
+export default function App({ Component }: any): JSX.Element {
+  return ( 
+    <div>
+      <RecoilRoot>
+      <CookiesProvider>
+        <Component />
+      </CookiesProvider>
+      </RecoilRoot>
+    </div>
+  );
 }
+
