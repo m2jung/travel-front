@@ -1835,6 +1835,11 @@ scheduler@^0.20.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
+schema@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/schema/-/schema-0.2.1.tgz#baf356888fb51f89ea2296a8de1fe527c567be84"
+  integrity sha512-qe1rWLwVGv4p11+9ZO6UwfcagNlHAexd7VdWhCQKajPRkoQOahq4mnE9YT88+osL1N3ZtQuh8broh+I3aeaPvA==
+
 scroll-into-view-if-needed@^3.0.3:
   version "3.0.10"
   resolved "https://registry.yarnpkg.com/scroll-into-view-if-needed/-/scroll-into-view-if-needed-3.0.10.tgz#38fbfe770d490baff0fb2ba34ae3539f6ec44e13"

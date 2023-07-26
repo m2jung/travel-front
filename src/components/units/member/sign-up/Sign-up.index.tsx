@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup'
-import schema from 'yup';
+import { schema } from "./Sign-up-schema";
 import styled from "styled-components";
 
 interface IFormData {
