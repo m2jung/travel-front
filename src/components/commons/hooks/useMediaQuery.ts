@@ -25,7 +25,6 @@ export function useMediaQuery(query: string): any {
         handleChange()
 
         // 조건문 Event 감지 (렌더링 시점을 알 수 있도록 useEffect안에서 사용해야 한다.)
-        // 밑에 조건문 함수가 꼭 필요한가???????
         // addEventListener를 통해 이벤트를 등록하고 난 뒤 이벤트 등록을 해제해주지 않으면, 계속해서 이벤트를 감지하기 때문에 성능 저하를 일으킬 수 있다. 그러므로 컴포넌트가 언마운트 될 때 꼭 이벤트 등록을 해제해주어야 한다.
         if(matchMedia.addListener) {
             matchMedia.addListener(handleChange)
@@ -43,7 +42,7 @@ export function useMediaQuery(query: string): any {
     },[query])
 
     return matches;
-    // true? PC모드 false? Mobile모드  반환 
+    // boolean 타입으로 반환
 
 }
 
