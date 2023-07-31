@@ -7,7 +7,7 @@ import { useMediaQuery } from "../src/components/commons/hooks/useMediaQuery";
 // 모든 페이지가 합쳐지는 곳 
 export default function App({ Component }: any): JSX.Element {
 
-  // 반응형 Hook
+  // 반응형 Hook 
   const matches = useMediaQuery("(min-width: 600px)");
 
   return ( 
