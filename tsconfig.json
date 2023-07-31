@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/components/units/pre-main/body/3/ThirdSection.styles.ts"  ],
   "exclude": [
     "node_modules"
   ]
