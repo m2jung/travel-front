@@ -29,25 +29,30 @@ export const Title = styled.div`
 `
 
 export const Start = styled.div`
-    width: 180px;
+    width: 160px;
     height: 30px;
     border: 2px solid white;
     border-radius: 20px;
-    box-shadow: 1px 1px 3px gray;
+    box-shadow: 1px 1px 1px lightgray;
     display: flex;
-    justify-content: center;
     align-items: center;
     color: ivory;
     font-size: 17px;
     margin-left: auto;
 `
 
-export const StartWeb = styled.div`
+export const StartBtn = styled.div`
     width: 27px;
     height: 27px;
     border-radius: 15px;
     box-shadow: 1px 1px 1px gray;
     background-color: white;
+    margin: 1px; 
+`
+
+export const StartText = styled.div`
+    width: 100%;
+    text-align: center;
 `
 
 export const StartMobile = styled.div`

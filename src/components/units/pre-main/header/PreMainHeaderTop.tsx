@@ -1,15 +1,32 @@
+import { useRouter,useState,} from 'next/router';
+import { opacityVariants } from 
 import * as S from './PreMainHeader.styled'
 
 export default function PreMainHeaderTop():JSX.Element {
+
+  const router = useRouter();
+  const onClickBtn = () => {
+    // transition 
+    router.push('./main');
+  }
+
+  const { ref, animation } = useObserver();
+
 
   return (
     <>
      <S.Header>
       <S.BackImage style={{backgroundImage: `url('/images/background.png')`}}>
         <S.Start>
-         <S.StartWeb/>여행 시작하기
+         <S.StartBtn onClick={onClickBtn}/>
+         <S.StartText>여행 시작하기</S.StartText>
         </S.Start>
-        <S.Title>
+        <S.Title
+            ref={ref}
+            initial="hidden"
+            animate={animation}
+            variants={opacityVariants}
+            >
                 떠나고 싶을 때,<br/>
                 나를 아는 여행 플래너 <br/>
                 떠플
