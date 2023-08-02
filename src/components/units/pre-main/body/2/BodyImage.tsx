@@ -1,7 +1,6 @@
 import ReactPlayer from 'react-player'
 import * as S from './BodyImage.styles'
 
-
 export default function BodyImage():JSX.Element {
 
     return(

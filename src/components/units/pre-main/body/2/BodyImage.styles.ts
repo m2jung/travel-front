@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 export const Wrapper = styled.div`
     width: 900px;
     height: 600px;
-    margin-top: 100px;
+    margin: 100px;
     display: flex;
     justify-content: center;
 `

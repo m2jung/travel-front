@@ -6,8 +6,6 @@ import { useInView } from 'react-intersection-observer';
 const useObserver = () => {
     const animation = useAnimation();
     const { ref, inView } = useInView(); // ref(가시성 감지,적용) inView(화면에 가시적으로 보이는지 boolean값)
-
-
     // ref,inView 에 변화가 있을 때마다 렌더링후 변화값 반환
     useEffect(()=> {
         if(inView) {
